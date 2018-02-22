@@ -7,18 +7,18 @@ describe DockingStation do
   it 'releases a working bike' do
     bike = Bike.new
     subject.dock(bike)
-    expect(subject.release_bike).to eq @bikes_in_dock
+    expect(subject.release_bike).to eq bike
   end
 # test 4 - 'dock(bike) method exists and accepts 1 argument'
   it { is_expected.to respond_to(:dock).with(1).argument }
 # test 5 - 'bike method exists'
   it { is_expected.to respond_to :bike }
 # test 6
-  # it 'docks a bike' do
-  #   ds = DockingStation.new
-  #   bike = Bike.new
-  #   expect(ds.dock(bike)).to respond_to :dock
-  # end
+  it 'docks a bike' do
+    ds = DockingStation.new
+    bike = Bike.new
+    expect(ds.dock(bike)).to be_an_instance_of(Array)
+  end
 # test 7
   it 'shows docked bikes' do
     ds = DockingStation.new
@@ -35,7 +35,7 @@ describe DockingStation do
   it 'dock only accepts 20 bikes' do
     ds = DockingStation.new
     bike = Bike.new
-    20.times{ds.dock(bike)}
+    20.times{ ds.dock(bike) }
     expect { ds.dock(bike) }.to raise_error "Bike dock full"
   end
 end
