@@ -1,6 +1,7 @@
 require './lib/docking_station'
 
 describe DockingStation do
+  DEFAULT_CAPACITY = 20
 # test 1
   it { is_expected.to respond_to :release_bike }
 # test 3
@@ -35,7 +36,12 @@ describe DockingStation do
   it 'dock only accepts 20 bikes' do
     ds = DockingStation.new
     bike = Bike.new
-    20.times{ ds.dock(bike) }
+    DEFAULT_CAPACITY.times{ ds.dock(bike) }
     expect { ds.dock(bike) }.to raise_error "Bike dock full"
+  end
+
+  it 'has a default capacity' do
+    ds = DockingStation.new
+    expect(ds.capacity).to eq 20
   end
 end
