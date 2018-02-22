@@ -42,6 +42,6 @@ describe DockingStation do
 
   it 'has a default capacity' do
     ds = DockingStation.new
-    expect(ds.capacity).to eq 20
+    expect(ds.capacity).to eq DEFAULT_CAPACITY
   end
 end
