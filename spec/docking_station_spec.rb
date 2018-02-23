@@ -39,9 +39,16 @@ describe DockingStation do
     DEFAULT_CAPACITY.times{ ds.dock(bike) }
     expect { ds.dock(bike) }.to raise_error "Bike dock full"
   end
-
+# test 10
   it 'has a default capacity' do
     ds = DockingStation.new
     expect(ds.capacity).to eq DEFAULT_CAPACITY
+  end
+# test 12
+  it 'has a status of broken when the user reports a fault' do
+    ds = DockingStation.new
+    bike = Bike.new
+    ds.dock(bike,"broken")
+    expect(bike.status).to eq "broken"
   end
 end
