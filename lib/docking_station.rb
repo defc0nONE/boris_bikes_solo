@@ -16,8 +16,9 @@ class DockingStation
     @bikes_in_dock.pop
   end
 
-  def dock(bike)
+  def dock(bike, bike_status = "working")
     fail 'Bike dock full' if full
+    bike.report_bike(bike_status)
     @bikes_in_dock << bike
   end
 
