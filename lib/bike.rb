@@ -5,8 +5,8 @@ class Bike
     @status = "working"
   end
 
-  def working?
-    true
+  def working
+    @status
   end
 
   def report_bike(bike_status)

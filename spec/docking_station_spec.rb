@@ -51,4 +51,12 @@ describe DockingStation do
     ds.dock(bike,"broken")
     expect(bike.status).to eq "broken"
   end
+  # test 13
+  it 'Doesnt release a bike if its broken' do
+    ds = DockingStation.new
+    bike = Bike.new
+    ds.dock(bike,"broken")
+    expect { ds.release_bike }.to raise_error "Bikes are busted"
+  end
+
 end
